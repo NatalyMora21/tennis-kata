@@ -1,8 +1,8 @@
 
 public class TennisGame1 implements TennisGame {
     
-    private int socorePlayer1 = 0;
-    private int socorePlayer2 = 0;
+    private int scorePlayer1 = 0;
+    private int scorePlayer2 = 0;
     private String player1Name;
     private String player2Name;
 
@@ -15,19 +15,19 @@ public class TennisGame1 implements TennisGame {
 
 
         if (playerName == "player1")
-            socorePlayer1 += 1;
+            scorePlayer1 += 1;
 
         if (playerName == "player2")
-            socorePlayer2 += 1;
+            scorePlayer2 += 1;
     }
 
     public String getScore() {
         //String score = "";
         StringBuilder score= new StringBuilder();
         int tempScore=0;
-        if (socorePlayer1==socorePlayer2)
+        if (scorePlayer1==scorePlayer2)
         {
-            switch (socorePlayer1)
+            switch (scorePlayer1)
             {
                 case 0:
                         score.append("Love-All");
@@ -44,9 +44,9 @@ public class TennisGame1 implements TennisGame {
 
             }
         }
-        else if (socorePlayer1>=4 || socorePlayer2>=4)
+        else if (scorePlayer1>=4 || scorePlayer2>=4)
         {
-            int minusResult = socorePlayer1-socorePlayer2;
+            int minusResult = scorePlayer1-scorePlayer2;
             if (minusResult==1) score.append("Advantage player1");
             else if (minusResult ==-1) score.append("Advantage player2");
             else if (minusResult>=2) score.append("Win for player1");
@@ -56,9 +56,9 @@ public class TennisGame1 implements TennisGame {
         {
             for (int i=1; i<3; i++)
             {
-                if (i==1) tempScore = socorePlayer1;
+                if (i==1) tempScore = scorePlayer1;
                 else {
-                    score.append("-"); tempScore = socorePlayer2;
+                    score.append("-"); tempScore = scorePlayer2;
                 }
 
                 switch(tempScore)
