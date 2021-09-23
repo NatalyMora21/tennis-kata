@@ -12,9 +12,10 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (playerName == "player1")
+
+        if (playerName.equals(this.player1Name))
             scorePlayer1 += 1;
-        if (playerName == "player2")
+        if (playerName.equals(this.player2Name))
             scorePlayer2 += 1;
     }
 
@@ -45,23 +46,27 @@ public class TennisGame1 implements TennisGame {
                 score.append("-"); tempScore = scorePlayer2;
             }
 
-            switch(tempScore)
-            {
-                case 0:
-                    score.append("Love");
-                    break;
-                case 1:
-                    score.append("Fifteen");
-                    break;
-                case 2:
-                    score.append("Thirty");
-                    break;
-                case 3:
-                    score.append("Forty");
-                    break;
-                default:
-                    score.append("");
-            }
+            extracted(score, tempScore);
+        }
+    }
+
+    private void extracted(StringBuilder score, int tempScore) {
+        switch(tempScore)
+        {
+            case 0:
+                score.append("Love");
+                break;
+            case 1:
+                score.append("Fifteen");
+                break;
+            case 2:
+                score.append("Thirty");
+                break;
+            case 3:
+                score.append("Forty");
+                break;
+            default:
+                score.append("");
         }
     }
 
