@@ -21,41 +21,20 @@ public class TennisGame2 implements TennisGame
 
     public String getScore(){
         String score = "";
-        if (pointPlayer1 == pointPlayer2 && pointPlayer1 < 4)
-        {
-            score = resultEqualScore(score);
-        }
-        if (pointPlayer1==pointPlayer2 && pointPlayer1>=3)
-            score = "Deuce";
-        
-        if (pointPlayer1 > 0 && pointPlayer2==0)
-        {
-            score = resultDifferent1Score();
-        }
-        if (pointPlayer2 > 0 && pointPlayer1==0)
-        {
-            score = resultDifferent2Score();
-        }
-        
-        if (pointPlayer1>pointPlayer2 && pointPlayer1 < 4)
-        {
-            score = resultHigher1Score();
-        }
-        if (pointPlayer2>pointPlayer1 && pointPlayer2 < 4)
-        {
-            score = resultHigher2Score();
-        }
-        
-        if (pointPlayer1 > pointPlayer2 && pointPlayer2 >= 3)
-        {
-            score = "Advantage player1";
-        }
-        
-        if (pointPlayer2 > pointPlayer1 && pointPlayer1 >= 3)
-        {
-            score = "Advantage player2";
-        }
-        
+
+        score = resultEqual(score);
+
+        score = resultDifferent(score);
+
+        score = resultHigher(score);
+
+        score = resultHighertoOne(score);
+
+        score = resultHighertoFour(score);
+        return score;
+    }
+
+    private String resultHighertoFour(String score) {
         if (pointPlayer1>=4 && pointPlayer2>=0 && (pointPlayer1-pointPlayer2)>=2)
         {
             score = "Win for player1";
@@ -64,9 +43,54 @@ public class TennisGame2 implements TennisGame
         {
             score = "Win for player2";
         }
-
         return score;
+    }
 
+    private String resultHighertoOne(String score) {
+        if (pointPlayer1 > pointPlayer2 && pointPlayer2 >= 3)
+        {
+            score = "Advantage player1";
+        }
+
+        if (pointPlayer2 > pointPlayer1 && pointPlayer1 >= 3)
+        {
+            score = "Advantage player2";
+        }
+        return score;
+    }
+
+    private String resultHigher(String score) {
+        if (pointPlayer1>pointPlayer2 && pointPlayer1 < 4)
+        {
+            score = resultHigher1Score();
+        }
+        if (pointPlayer2>pointPlayer1 && pointPlayer2 < 4)
+        {
+            score = resultHigher2Score();
+        }
+        return score;
+    }
+
+    private String resultDifferent(String score) {
+        if (pointPlayer1 > 0 && pointPlayer2==0)
+        {
+            score = resultDifferent1Score();
+        }
+        if (pointPlayer2 > 0 && pointPlayer1==0)
+        {
+            score = resultDifferent2Score();
+        }
+        return score;
+    }
+
+    private String resultEqual(String score) {
+        if (pointPlayer1 == pointPlayer2 && pointPlayer1 < 4)
+        {
+            score = resultEqualScore(score);
+        }
+        if (pointPlayer1==pointPlayer2 && pointPlayer1>=3)
+            score = "Deuce";
+        return score;
     }
 
     private String resultHigher2Score() {
